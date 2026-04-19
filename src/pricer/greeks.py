@@ -15,7 +15,7 @@ class Greeks:
             return np.exp(-self.pricer.q * tau) * ss.norm.cdf(d1)
         if option_type == "put":
             return -np.exp(-self.pricer.q * tau) * ss.norm.cdf(-d1)
-        raise ValueError("option_type must be 'call' or 'put'")
+        raise ValueError("option_typ must be 'call' or 'put'")
 
     def gamma(self, S, tau):
         """Calculate gamma of the option."""
