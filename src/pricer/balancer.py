@@ -14,5 +14,5 @@ def needs_rebalancing(ticker: str, target_weight: float, tolerance: float = 0.05
     """Retourne True si le poids actuel dévie de plus de tolerance."""
     current_price = get_etf_price(ticker)
     portfolio_total = portfolio_value(holdings)
-    current_weight = current_price / portfolio_total
+    current_weight = (current_price * holdings.get(ticker, 0)) / portfolio_total
     return abs(current_weight - target_weight) > tolerance
