@@ -194,6 +194,8 @@ class GetMarketData:
     def get_volatility_dataframe(self, volatility_data: Dict) -> pd.DataFrame:
         try:
             df = pd.DataFrame.from_dict(volatility_data["strikes"], orient="index")
+            if df.empty or "strike" not in df.columns:
+                return pd.DataFrame()
             df["risk_free_rate"] = volatility_data["risk_free_rate"]
             df["dividend_yield"] = volatility_data["dividend_yield"]
             df["ticker"] = volatility_data["ticker"]

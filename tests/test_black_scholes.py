@@ -5,7 +5,7 @@ from src.pricer.black_scholes import BlackScholesPricer
 import numpy as np 
 
 
-@pytest.fixture
+@pytest.fixture(scope = "session") # or per function, per class, etc.
 def black_scholes_pricer():
     S = 100  # Stock price
     K = 100  # Strike price
@@ -39,6 +39,7 @@ def test_put_black_scholes(black_scholes_pricer: BlackScholesPricer):
     "T court",
     "haute vol"
 ])
+
 def test_call_parity(S, K, T, sigma, r, parity):
     pricer = BlackScholesPricer(S, K, T, sigma, r)
     call_price = pricer.price_call()    

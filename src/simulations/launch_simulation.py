@@ -166,7 +166,6 @@ class Launcher:
 if __name__ == "__main__":
     ticker = "MSFT"
     launcher = Launcher(ticker)
-    portfolio = launcher.launch()
     launcher.run()
 # %%
 

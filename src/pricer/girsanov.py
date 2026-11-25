@@ -1,7 +1,8 @@
 import numpy as np
 import scipy.stats as ss
+from .gbm import GeometricBrownianMotion
 
-class GirsanovSimulator:
+class GirsanovSimulator():
     """Class for simulating paths under risk-neutral measure using Girsanov theorem."""
 
     def __init__(self, S0: float, mu: float, r: float, sigma: float, N: int, T: float, M: int):
@@ -20,7 +21,7 @@ class GirsanovSimulator:
 
         theta = (self.mu - self.r) / self.sigma
         dW = ss.norm.rvs(scale=np.sqrt(dt), size=(self.N - 1, self.M))
-        dW_tilde = dW - theta * np.sqrt(dt)
+        dW_tilde = dW + theta * dt
 
         W_tilde = np.cumsum(dW_tilde, axis=0)
         W_tilde = np.vstack([np.zeros(self.M), W_tilde])

@@ -21,9 +21,11 @@ wheels/
 *.egg
 
 # Virtual Environment
+.venv/
 venv/
 ENV/
 env/
+src/venv/
 
 # IDE
 .idea/
@@ -77,4 +79,6 @@ wheels/
 .Spotlight-V100
 .Trashes
 ehthumbs.db
+.pytest_cache/
+__pycache__/
 Thumbs.db 

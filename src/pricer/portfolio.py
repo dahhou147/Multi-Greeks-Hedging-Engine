@@ -86,7 +86,8 @@ class ConstructPortfolio:
         )
         b = np.array([delta0, gamma0, vega0])
 
-        cond = np.linalg.cond(matrix)
+        cond = np.linalg.cond(matrix) # verifier si la fonction est inversible et son inverse est stable numeriquement
+        
 
         if cond > 1e10:
             lambda_reg = 1e-6

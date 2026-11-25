@@ -1,0 +1,29 @@
+[project]
+name = "option-hedging-webb"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "dahhou147",email = "odahou89@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.8,<3.12"
+dependencies = [
+    "numpy",
+    "scipy",
+    "matplotlib",
+    "pandas",
+    "yfinance",
+    "seaborn",
+    "openbb",
+    "pytest",
+    "plotly",
+    "colorlog"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+package-mode = false

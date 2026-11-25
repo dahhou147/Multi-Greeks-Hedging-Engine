@@ -14,11 +14,12 @@ class EvarAlpha:
         self.alpha = alpha
 
     def moment(self, t):
-        exp = np.exp(t * self.X)
+        exponent = np.clip(t * self.X, -700, 700)
+        exp = np.exp(exponent)
         return np.mean(exp)
 
     def evar_main_ft(self, t):
-        return np.power(t, -1) * (np.log(self.moment(t) / self.alpha))
+        return np.power(t, -1) * (np.log(self.moment(t)) - np.log(self.alpha))
 
     def evar(self):
         result = minimize(self.evar_main_ft, x0=0.5, bounds=bound)
@@ -41,7 +42,7 @@ if __name__ == "__main__":
     M = 1000
     alpha = 0.95
     X = ss.norm.rvs(size=M)
-    alphas = np.linspace(0, 1, 100)
+    alphas = np.linspace(1e-6, 1 - 1e-6, 100)
     L = [x(alpha) for alpha in alphas]
     ES = [EvarAlpha(X, alpha).short_fall() for alpha in alphas]
     L_empiric = [EvarAlpha(X, alpha).evar() for alpha in alphas]

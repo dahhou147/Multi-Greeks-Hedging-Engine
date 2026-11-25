@@ -21,4 +21,3 @@ class GeometricBrownianMotion:
         W = np.vstack([np.zeros(self.M), W])
         S = self.S0 * np.exp((self.mu - 0.5 * self.sigma**2) * t[:, None] + self.sigma * W)
         return t, S
-
